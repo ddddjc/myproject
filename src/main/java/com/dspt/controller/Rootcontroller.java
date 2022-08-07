@@ -36,8 +36,8 @@ public class Rootcontroller {
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
         if(username.equals("root")){
-            int a=(n-1)*5;
-            int b=5;
+            int a=(n-1)*10;
+            int b=10;
             return rootservice.findsome(a,b);
         }else {
             return null;
@@ -58,7 +58,9 @@ public class Rootcontroller {
         String username=map.get("username").toString();
         int n=Integer.parseInt(map.get("n").toString());
         rootservice.del(username);
-        return rootservice.findsome((n-1)*5,n*5);
+        int a=(n-1)*10;
+        int b=10;
+        return rootservice.findsome(a,b);
     }
     @RequestMapping("/del2")
     public List<User> del2(@RequestBody Map<String,Object> map){
