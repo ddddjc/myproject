@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dspt.mapper.Usermapper">
+
+<insert id="add" parameterType="User">
+    insert into user (username,password,age) values (#{username},#{password},#{age})
+</insert>
+<!--查询所有-->
+<!--    <select id="findall" resultType="User">-->
+<!--        select * from user-->
+<!--    </select>-->
+<!--  修改-->
+    <update id="update" parameterType="User" >
+        update user set name=#{name},age=#{age},sex=#{sex},addr=#{addr},birth=#{birth},phone=#{phone} where username=#{username}
+     </update>
+    <!--    查询某一个根据User-->
+    <select id="findone" resultType="user">
+        select * from user where username=#{username}
+    </select>
+<!--    修改头像-->
+    <update id="updatetx" parameterType="string">
+        update user set url=#{url} where username=#{username}
+    </update>
+</mapper>
