@@ -45,7 +45,7 @@ public class Rootcontroller {
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
         if(username.equals("root")){
-            return rootservice.findlittle("o");
+            return rootservice.findlittle(s);
         }else {
             return null;
         }
