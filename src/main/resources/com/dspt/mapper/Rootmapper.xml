@@ -6,7 +6,10 @@
     </select>
 <!--    查询20个-->
     <select id="findsome" parameterType="int" resultType="User">
-        select * from user limit #{a},#{b}
+        select * from user
+                 where username not in ("root")
+                 order by username
+                 limit #{a},#{b}
     </select>
     <select id="findlittle" parameterType="string" resultType="User">
         select * from user where username like concat('%',#{username},'%')or name like concat('%',#{name},'%') or addr like concat('%',#{addr},'%')

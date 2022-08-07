@@ -37,7 +37,7 @@ public class Rootcontroller {
         String username=JWTconfig.gettokenUsername(token);
         if(username.equals("root")){
             int a=(n-1)*5;
-            int b=n*5;
+            int b=5;
             return rootservice.findsome(a,b);
         }else {
             return null;
