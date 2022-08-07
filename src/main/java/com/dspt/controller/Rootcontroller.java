@@ -3,6 +3,7 @@ package com.dspt.controller;
 import com.dspt.entity.User;
 import com.dspt.jwt.JWTconfig;
 import com.dspt.service.Rootservice;
+import com.dspt.service.Userservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import java.util.Map;
 public class Rootcontroller {
     @Autowired
     Rootservice rootservice;
+    @Autowired
+    Userservice userservice;
     @RequestMapping("/all")//root操作
     public List<User> findalluser(HttpServletRequest request){
         String token=request.getHeader("token").toString();
@@ -63,5 +66,17 @@ public class Rootcontroller {
         String s=map.get("s").toString();
         rootservice.del(username);
         return rootservice.findlittle(s);
+    }
+    @RequestMapping("/add")
+    public String adduser(@RequestBody User user){
+        User findone = userservice.findone(user.getUsername());
+        if(findone!=null){
+            return "用户名重复，新增失败";
+        }
+        else
+        {
+            userservice.add(user);
+            return "新增成功";
+        }
     }
 }
