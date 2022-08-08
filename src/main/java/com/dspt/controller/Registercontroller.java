@@ -3,6 +3,7 @@ package com.dspt.controller;
 
 import com.dspt.entity.User;
 import com.dspt.service.Userservice;
+import com.dspt.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,20 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 
 @RequestMapping
 @RestController
-public class Registercontroller {
+public class Registercontroller extends BaseController{
     @Autowired
     Userservice userservice;
     @RequestMapping("/register/getmenu")
-    public String register(@RequestBody User user, HttpServletRequest request) {
+    public JsonResult register(@RequestBody User user, HttpServletRequest request) {
         System.out.println(user.toString());
         User findone = userservice.findone(user.getUsername());
         if(findone!=null){
-            return "用户名重复，注册失败";
+            return new JsonResult(HAD,"用户名重复，注册失败",null);
         }
         else
         {
             userservice.add(user);
-            return "注册成功";
+            return new JsonResult(OK,"注册成功",null);
         }
     }
 }
