@@ -79,7 +79,7 @@ public class Rootcontroller extends BaseController{
         }
         else
         {
-            userservice.add(user);
+            rootservice.add(user);
             return new JsonResult(OK,"新增成功",null);
         }
     }

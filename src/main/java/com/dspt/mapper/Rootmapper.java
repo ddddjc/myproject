@@ -11,4 +11,5 @@ public interface Rootmapper {
 
     List<User> findlittle(String s);
     void   del(String username);
+    void  add(User user);
 }

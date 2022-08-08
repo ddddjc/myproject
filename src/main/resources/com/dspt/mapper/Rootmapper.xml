@@ -17,4 +17,7 @@
     <delete id="del" parameterType="string">
         delete from user where username=#{username}
     </delete>
+    <insert id="add" parameterType="User">
+        insert into user (username,password,name,age,sex,addr,birth,phone,url) values (#{username},#{password},#{name},#{age},#{sex},#{addr},#{birth},#{phone},#{url})
+    </insert>
 </mapper>

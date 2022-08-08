@@ -33,4 +33,9 @@ public class Rootserviceimpl implements Rootservice {
     public void del(String username) {
         rootmapper.del(username);
     }
+
+    @Override
+    public void add(User user) {
+        rootmapper.add(user);
+    }
 }

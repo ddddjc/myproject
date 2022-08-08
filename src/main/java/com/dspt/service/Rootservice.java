@@ -10,4 +10,6 @@ public interface Rootservice {
     List<User> findsome(@Param("a") int a, @Param("b") int b);
     List<User> findlittle(String s);
     void del(String username);
+
+    void add(User user);
 }
