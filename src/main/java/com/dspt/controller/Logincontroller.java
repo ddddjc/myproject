@@ -33,10 +33,8 @@ public class Logincontroller {
                 if (user.getUsername().equals("root")) {
                     map.put("token",token);
                     map.put("message","管理员登录成功");
-
                     return map;
                 } else {
-
                     map.put("token",token);
                     map.put("message","用户登录成功");
                     return map;
