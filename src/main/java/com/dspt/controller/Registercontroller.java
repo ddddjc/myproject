@@ -5,6 +5,7 @@ import com.dspt.entity.User;
 import com.dspt.service.Userservice;
 import com.dspt.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Registercontroller extends BaseController{
     @Autowired
     Userservice userservice;
-    @RequestMapping("/register/getmenu")
+    @PostMapping("/register/getmenu")
     public JsonResult register(@RequestBody User user, HttpServletRequest request) {
         System.out.println(user.toString());
         User findone = userservice.findone(user.getUsername());

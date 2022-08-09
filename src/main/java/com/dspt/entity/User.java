@@ -13,7 +13,7 @@ public class User {
       private String username;
       private String password;
       private String name;
-      private int age;
+      private Integer age;
       private String sex;
       private String addr;
       private String birth;

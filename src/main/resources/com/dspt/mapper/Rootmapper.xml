@@ -12,7 +12,10 @@
                  limit #{a},#{b}
     </select>
     <select id="findlittle" parameterType="string" resultType="User">
-        select * from user where username like concat('%',#{username},'%')or name like concat('%',#{name},'%') or addr like concat('%',#{addr},'%')
+        select * from user
+                 where username like concat('%',#{username},'%')
+                    or name like concat('%',#{name},'%')
+                    or addr like concat('%',#{addr},'%')
     </select>
     <delete id="del" parameterType="string">
         delete from user where username=#{username}
