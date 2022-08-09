@@ -11,10 +11,10 @@ public class JsonResult<E> implements Serializable {
     private Integer state;
 
     /** 状态描述信息 */
-    private String message;
+    private String messag;
 
     /** 数据 */
-    private E data;
+    private E Da;
 
     public JsonResult() {
         super();
@@ -29,19 +29,19 @@ public class JsonResult<E> implements Serializable {
     public JsonResult(Throwable e) {
         super();
         // 获取异常对象中的异常信息
-        this.message = e.getMessage();
+        this.messag = e.getMessage();
     }
 
     public JsonResult(Integer state, E data) {
         super();
         this.state = state;
-        this.data = data;
+        this.Da = data;
     }
 
-    public JsonResult(Integer state, String message, E data) {
+    public JsonResult(Integer state, String message, E Da) {
         this.state = state;
-        this.message = message;
-        this.data = data;
+        this.messag = message;
+        this.Da = Da;
     }
 
     public Integer getState() {
@@ -53,18 +53,18 @@ public class JsonResult<E> implements Serializable {
     }
 
     public String getMessage() {
-        return message;
+        return messag;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.messag = message;
     }
 
     public E getData() {
-        return data;
+        return Da;
     }
 
     public void setData(E data) {
-        this.data = data;
+        this.Da = data;
     }
 }

@@ -4,6 +4,7 @@
     <select id="findAllBuyed" parameterType="string" resultType="Buyed">
         select * from buyed where username =#{username}
     </select>
+
     <insert id="addbuyed" parameterType="Buyed">
         insert into buyed (username,id,date,num) values (#{username},#{id},#{date},#{num})
     </insert>

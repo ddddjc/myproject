@@ -36,6 +36,16 @@ public class Carserviceimpl implements Carservice {
     }
 
     @Override
+    public void delall(String username) {
+        carmapper.delall(username);
+    }
+
+    @Override
+    public Car findoen(String cid) {
+        return carmapper.findoen(cid);
+    }
+
+    @Override
     public void addcar(Car car) {
          carmapper.addcar(car);
     }

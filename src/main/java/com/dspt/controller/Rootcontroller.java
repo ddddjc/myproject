@@ -33,8 +33,32 @@ public class Rootcontroller extends BaseController{
         else
             return new JsonResult(FALSE,"未知错误",null);
     }
+//    @PostMapping("/alluserdata")
+//    public JsonResult findsome(@RequestBody String s,HttpServletRequest request){
+//        int n=Integer.parseInt(s);
+//        System.out.println(n);
+//        String token=request.getHeader("token");
+//        String username=JWTconfig.gettokenUsername(token);
+//        if(username.equals("root")){
+//            int a=(n-1)*10;
+//            int b=10;
+//            return new JsonResult(OK,"查询成功",rootservice.findsome(a,b));
+//        }else {
+//            return new JsonResult(FALSE,"未知错误",null);
+//        }
+//    }
+//    @PostMapping("/little")
+//    public JsonResult findlittle(@RequestBody String s,HttpServletRequest request){
+//        String token=request.getHeader("token");
+//        String username=JWTconfig.gettokenUsername(token);
+//        if(username.equals("root")){
+//            return new JsonResult(OK,"查询成功",rootservice.findlittle(s));
+//        }else {
+//            return new JsonResult(FALSE,"未知错误",null);
+//        }
+//    }
     @PostMapping("/alluserdata")
-    public JsonResult findsome(@RequestBody String s,HttpServletRequest request){
+    public List<User> findsome(@RequestBody String s,HttpServletRequest request){
         int n=Integer.parseInt(s);
         System.out.println(n);
         String token=request.getHeader("token");
@@ -42,38 +66,62 @@ public class Rootcontroller extends BaseController{
         if(username.equals("root")){
             int a=(n-1)*10;
             int b=10;
-            return new JsonResult(OK,"查询成功",rootservice.findsome(a,b));
+//            return new JsonResult(OK,"查询成功",rootservice.findsome(a,b));
+        return rootservice.findsome(a,b);
         }else {
-            return new JsonResult(FALSE,"未知错误",null);
+            return null;
+//            return new JsonResult(FALSE,"未知错误",null);
         }
     }
-    @PostMapping("/little")
-    public JsonResult findlittle(@RequestBody String s,HttpServletRequest request){
+
+
+     @PostMapping("/little")
+    public List<User> findlittle(@RequestBody String s,HttpServletRequest request){
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
         if(username.equals("root")){
-            return new JsonResult(OK,"查询成功",rootservice.findlittle(s));
+//            return new JsonResult(OK,"查询成功",rootservice.findlittle(s));
+        return rootservice.findlittle(s);
         }else {
-            return new JsonResult(FALSE,"未知错误",null);
+//            return new JsonResult(FALSE,"未知错误",null);
+        return null;
         }
     }
-    @PostMapping("/del1")
-    public JsonResult del1(@RequestBody Map<String,Object> map){
+//    @PostMapping("/del1")
+//    public JsonResult del1(@RequestBody Map<String,Object> map){
+//        String username=map.get("username").toString();
+//        int n=Integer.parseInt(map.get("n").toString());
+//        rootservice.del(username);
+//        int a=(n-1)*10;
+//        int b=10;
+//        return new JsonResult(OK,"删除成功",rootservice.findsome(a,b));
+//    }
+//    @PostMapping("/del2")
+//    public JsonResult del2(@RequestBody Map<String,Object> map){
+//        String username=map.get("username").toString();
+//        String s=map.get("s").toString();
+//        rootservice.del(username);
+//        return new JsonResult(OK,"删除成功",rootservice.findlittle(s));
+//    }
+       @PostMapping("/del1")
+    public List<User> del1(@RequestBody Map<String,Object> map){
         String username=map.get("username").toString();
         int n=Integer.parseInt(map.get("n").toString());
         rootservice.del(username);
         int a=(n-1)*10;
         int b=10;
-        return new JsonResult(OK,"删除成功",rootservice.findsome(a,b));
+        return rootservice.findsome(a,b);
+//        return new JsonResult(OK,"删除成功",rootservice.findsome(a,b));
     }
     @PostMapping("/del2")
-    public JsonResult del2(@RequestBody Map<String,Object> map){
+    public List<User> del2(@RequestBody Map<String,Object> map){
         String username=map.get("username").toString();
         String s=map.get("s").toString();
         rootservice.del(username);
-        return new JsonResult(OK,"删除成功",rootservice.findlittle(s));
+//        return new JsonResult(OK,"删除成功",rootservice.findlittle(s));
+        return rootservice.findlittle(s);
     }
-    @PostMapping("/add")
+    @PostMapping("/ad")
     public JsonResult adduser(@RequestBody User user){
         User findone = userservice.findone(user.getUsername());
         if(findone!=null){

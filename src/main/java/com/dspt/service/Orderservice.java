@@ -1,5 +1,6 @@
 package com.dspt.service;
 
+import com.dspt.entity.Buyed;
 import com.dspt.entity.Buyeddetail;
 import com.dspt.entity.Cardetail;
 import com.dspt.mapper.Carmapper;
@@ -13,4 +14,5 @@ public interface Orderservice {
     List<Buyeddetail> buyed(String username);
 
     void tobuy(String id, HttpServletRequest request);
+    void tobuy(Buyed buyed);
 }

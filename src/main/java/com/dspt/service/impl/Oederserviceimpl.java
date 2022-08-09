@@ -60,4 +60,9 @@ public class Oederserviceimpl implements Orderservice {
         Buyed buyed=new Buyed(null,username,id,new Date(),1);
         buyedmapper.addbuyed(buyed);
     }
+
+    @Override
+    public void tobuy(Buyed buyed) {
+        buyedmapper.addbuyed(buyed);
+    }
 }

@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface Carservice {
     List<Cardetail> findcar(String username);
-
+    Car findoen(String cid);
     void addcar(Car car);
 
     void delcar(String cid);
+
+    void delall(String username);
 }
