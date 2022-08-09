@@ -9,6 +9,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Photos {
-    private String url;
+public class Car {
+    private String cid;
+    private String id;
+    private String username;
+    private int num;
 }

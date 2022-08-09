@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dspt.mapper.Buyedmapper">
+    <select id="findAllBuyed" parameterType="string" resultType="Buyed">
+        select * from buyed where username =#{username}
+    </select>
+    <insert id="addbuyed" parameterType="Buyed">
+        insert into buyed (username,id,date,num) values (#{username},#{id},#{date},#{num})
+    </insert>
+</mapper>

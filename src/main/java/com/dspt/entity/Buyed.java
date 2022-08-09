@@ -5,16 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Product {
+public class Buyed {
+    private String bid;
+    private String username;
     private String id;
-    private String label;
-    private String type;
-    private String url;
-    private String price;
-    private String addr;
-    private String phoen;
+    private Date date;
+    private int num;
 }

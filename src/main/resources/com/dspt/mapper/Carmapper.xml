@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dspt.mapper.Carmapper">
+    <select id="findcar" parameterType="string" resultType="Car">
+        select * from car where username=#{username}
+    </select>
+
+    <insert id="addcar" parameterType="Car">
+        insert into car (id,username,num) values (#{id},#{username},#{num})
+    </insert>
+    <delete id="delcar" parameterType="string">
+        delete from car where cid=#{cid}
+    </delete>
+
+    <delete id="buyall" parameterType="string">
+        delete  from car where username=#{username}
+    </delete>
+</mapper>
