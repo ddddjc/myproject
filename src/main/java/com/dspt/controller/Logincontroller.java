@@ -25,7 +25,7 @@ public class Logincontroller extends BaseController{
         System.out.println(user.toString());
         User findone = userservice.findone(user.getUsername());
         if (findone == null) {
-            String s="用户已存在";
+            String s="用户不已存在";
             return new JsonResult<String>(NOONE,s,null);
         } else {
             if (findone.getPassword().equals(user.getPassword())) {

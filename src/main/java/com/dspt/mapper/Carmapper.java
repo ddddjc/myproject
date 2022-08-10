@@ -8,6 +8,10 @@ import java.util.List;
 public interface Carmapper {
     List<Car> findcar(String username);
     Car findoen(String cit);
+
+    Car findpro(@Param("id") String id,@Param("username") String username);
+
+    void update(Car car);
     void addcar(Car car);
 
     void delcar(String cid);

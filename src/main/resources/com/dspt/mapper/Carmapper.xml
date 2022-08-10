@@ -7,6 +7,12 @@
     <select id="findoen" parameterType="string" resultType="Car">
         select * from car where cid=#{cid}
     </select>
+    <select id="findpro" parameterType="string" resultType="Car">
+        select * from car where id=#{id} and username=#{username}
+    </select>
+    <update id="update" parameterType="Car">
+        update car set num=#{num} where cid=#{cid}
+    </update>
     <insert id="addcar" parameterType="Car">
         insert into car (id,username,num) values (#{id},#{username},#{num})
     </insert>

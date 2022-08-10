@@ -18,7 +18,9 @@ public class Buyeddetail {
     private String label;
     private String type;
     private String url;
-    private String price;
+    private int price;
+
+    private int all;
     private String addr;
     private String phoen;
     private String username;
@@ -31,10 +33,11 @@ public class Buyeddetail {
         this.label=product.getLabel();
         this.phoen=product.getPhoen();
         this.url=product.getUrl();
-        this.price=product.getPrice();
+        this.price=Integer.parseInt(product.getPrice());
         this.type=product.getType();
         this.bid=buyed.getBid();
         this.num=buyed.getNum();
         this.date=buyed.getDate();
+        this.all=this.price*this.num;
     }
 }

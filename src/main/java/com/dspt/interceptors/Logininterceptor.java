@@ -26,7 +26,6 @@ public class Logininterceptor implements HandlerInterceptor {
         String token = request.getHeader("token");
         if(token==null||!JWTconfig.checkToken(token)){
             response.addHeader("error","please login");
-
             return false;
         }
         else {

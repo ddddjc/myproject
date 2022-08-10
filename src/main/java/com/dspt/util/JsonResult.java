@@ -14,7 +14,7 @@ public class JsonResult<E> implements Serializable {
     private String messag;
 
     /** 数据 */
-    private E Da;
+    private E data;
 
     public JsonResult() {
         super();
@@ -35,13 +35,13 @@ public class JsonResult<E> implements Serializable {
     public JsonResult(Integer state, E data) {
         super();
         this.state = state;
-        this.Da = data;
+        this.data = data;
     }
 
-    public JsonResult(Integer state, String message, E Da) {
+    public JsonResult(Integer state, String message, E tata) {
         this.state = state;
         this.messag = message;
-        this.Da = Da;
+        this.data = tata;
     }
 
     public Integer getState() {
@@ -61,10 +61,10 @@ public class JsonResult<E> implements Serializable {
     }
 
     public E getData() {
-        return Da;
+        return data;
     }
 
     public void setData(E data) {
-        this.Da = data;
+        this.data = data;
     }
 }

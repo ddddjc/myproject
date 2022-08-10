@@ -1,5 +1,6 @@
 package com.dspt.entity;
 
+import com.dspt.config.AesEncryptUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class User extends AesEncryptUtils{
       private String username;
       private String password;
       private String name;
@@ -20,4 +21,5 @@ public class User {
       private String phone;
       private String root;
       private String url;
+
 }

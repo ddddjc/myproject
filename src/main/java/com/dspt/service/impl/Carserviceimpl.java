@@ -47,7 +47,14 @@ public class Carserviceimpl implements Carservice {
 
     @Override
     public void addcar(Car car) {
-         carmapper.addcar(car);
+         Car car1=carmapper.findpro(car.getId(), car.getUsername());
+         if(car1==null){
+               carmapper.addcar(car);
+         }else {
+             Car car2=new Car(car1.getCid(),car1.getId(),car1.getUsername(),car1.getNum()+car.getNum());
+             carmapper.update(car2);
+         }
+
     }
 
     @Override

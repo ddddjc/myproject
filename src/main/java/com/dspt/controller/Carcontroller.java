@@ -9,14 +9,12 @@ import com.dspt.service.Carservice;
 import com.dspt.service.Orderservice;
 import com.dspt.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("Car")
@@ -25,7 +23,7 @@ public class Carcontroller {
     Carservice carservice;
     @Autowired
     Orderservice orderservice;
-    @PostMapping("/findcar")
+    @GetMapping("/findcar")
     public JsonResult findcar(HttpServletRequest request){
         String token=request.getHeader("token");
         String username= JWTconfig.gettokenUsername(token);
@@ -38,7 +36,7 @@ public class Carcontroller {
         return new JsonResult(200,"删除成功",null);
     }
     @PostMapping("/buyone")
-    public JsonResult buyoen(@RequestBody String cid,HttpServletRequest request){
+    public JsonResult buyoen(@RequestBody String cid, HttpServletRequest request){
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
         Car car =carservice.findoen(cid);
@@ -48,7 +46,7 @@ public class Carcontroller {
         carservice.delcar(cid);
         return new JsonResult(200,"购买成功",null);
     }
-    @PostMapping("/buyall")
+    @GetMapping("/buyall")
      public JsonResult buyall(HttpServletRequest request){
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
@@ -60,7 +58,7 @@ public class Carcontroller {
         carservice.delall(username);
         return new JsonResult(200,"购买成功",null);
     }
-    @PostMapping("delall")
+    @GetMapping("delall")
     public JsonResult delall(HttpServletRequest request){
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);

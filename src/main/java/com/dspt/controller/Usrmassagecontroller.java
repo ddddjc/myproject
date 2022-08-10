@@ -1,14 +1,12 @@
 package com.dspt.controller;
 
+import com.dspt.config.AesEncryptUtils;
 import com.dspt.entity.User;
 import com.dspt.jwt.JWTconfig;
 import com.dspt.service.Userservice;
 import com.dspt.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,8 +27,8 @@ public class Usrmassagecontroller extends BaseController{
 //        else
 //            return null;
 //    }
-    @PostMapping("/find/info")
-    public JsonResult<User> findmyself(HttpServletRequest request){
+    @GetMapping("/find/info")
+    public JsonResult<User> findmyself(HttpServletRequest request) throws Exception {
 //        Object username=session.getAttribute("username");
 //        System.out.println(userservice.findone(username.toString()));
 //        System.out.println(userservice.findone(username.toString()));
@@ -38,13 +36,14 @@ public class Usrmassagecontroller extends BaseController{
         if(JWTconfig.gettokenUsername((token))==null)
             return new JsonResult<User>(FALSE,"未知错误",null);
         User user= userservice.findone(JWTconfig.gettokenUsername(token));
-        return new JsonResult<User>(OK,"查询成功",user);
+        return new JsonResult<User>(OK,"查询成功",AesEncryptUtils.useredcrpt(user));
     }
     @PostMapping("/per/edit")
-    public JsonResult<User> changemyself(@RequestBody User user, HttpServletRequest request){
+    public JsonResult<User> changemyself(@RequestBody User user, HttpServletRequest request) throws Exception {
         userservice.update(user);
-        System.out.println(userservice.findone(user));
-        return new JsonResult<User>(OK,"修改成功",userservice.findone(user));
+        String token=request.getHeader("token");
+        User user1= userservice.findone(JWTconfig.gettokenUsername(token));
+        return new JsonResult<User>(OK,"修改成功",AesEncryptUtils.useredcrpt(user1));
     }
 //    @RequestMapping("/photo")
 //    public void photo(@RequestBody String url,HttpServletRequest request)
