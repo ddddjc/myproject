@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("Car")
+@RequestMapping("car")
 public class Carcontroller {
     @Autowired
     Carservice carservice;
