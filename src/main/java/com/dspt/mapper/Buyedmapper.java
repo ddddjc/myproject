@@ -8,4 +8,6 @@ public interface Buyedmapper {
     List<Buyed> findAllBuyed(String username);
 
     void addbuyed(Buyed buyed);
+
+    Buyed findone(String bid);
 }

@@ -10,16 +10,18 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Cardetail {
+    private String cid;
     private String id;
+    private String pname;
     private String label;
     private String type;
     private String url;
-    private String price;
+    private Double price;
+    private int num;
+    private Double all;
     private String addr;
     private String phoen;
-//    private String cid;
 //    private String username;
-    private int num;
 
     public Cardetail(Product product, Car car) {
         this.id=product.getId();
@@ -27,10 +29,12 @@ public class Cardetail {
         this.label=product.getLabel();
         this.phoen=product.getPhoen();
         this.url=product.getUrl();
+        this.pname=product.getPname();
         this.price=product.getPrice();
         this.type=product.getType();
-//        this.cid=car.getCid();
+        this.cid=car.getCid();
 //        this.username=car.getUsername();
         this.num=car.getNum();
+        this.all=this.price*this.num;
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Carmapper {
     List<Car> findcar(String username);
-    Car findoen(String cit);
+    Car findoen(String cid);
 
     Car findpro(@Param("id") String id,@Param("username") String username);
 

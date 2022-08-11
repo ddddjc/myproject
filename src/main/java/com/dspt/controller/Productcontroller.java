@@ -32,8 +32,12 @@ public class Productcontroller {
        return new JsonResult(200,"查询成功",productservice.findAllProduct());
     }
     @GetMapping("findtype")
-    public JsonResult findsome(@RequestBody String type){
+    public JsonResult findsome(String type){
         return new JsonResult(200,"查询成功",productservice.findTypeProduct(type));
+    }
+    @GetMapping("finddetil")
+    public JsonResult finddetil(String id){
+        return new JsonResult(200,"查询成功",productservice.finddetil(id));
     }
     @PostMapping("/addcar")
     public JsonResult addcar(@RequestBody Map map, HttpServletRequest request){

@@ -40,29 +40,38 @@ public class Oederserviceimpl implements Orderservice {
 //    }
 
     @Override
-    public List<Buyeddetail> buyed(String username) {
-        List<Buyeddetail> buyeddetails=new ArrayList<>();
+    public List<Buyeddet> buyed(String username) {
+        List<Buyeddet> buyeddets=new ArrayList<>();
         List<Buyed> buyeds=buyedmapper.findAllBuyed(username);
         if (buyeds==null)
             return null;
         for(Buyed buyed:buyeds){
             Product oneProduct = productmapper.findOneProduct(buyed.getId());
             Buyeddetail buyeddetail=new Buyeddetail(oneProduct,buyed);
-            buyeddetails.add(buyeddetail);
+            Buyeddet buyeddet=new Buyeddet(buyeddetail);
+            buyeddets.add(buyeddet);
         }
-        return buyeddetails;
+        return buyeddets;
     }
 
     @Override
-    public void tobuy(String id, HttpServletRequest request) {
+    public void tobuy(Car car, HttpServletRequest request) {
         String token=request.getHeader("token");
         String username= JWTconfig.gettokenUsername(token);
-        Buyed buyed=new Buyed(null,username,id,new Date(),1);
+        Buyed buyed=new Buyed(null,username,car.getId(),new Date(),car.getNum());
         buyedmapper.addbuyed(buyed);
     }
 
     @Override
     public void tobuy(Buyed buyed) {
         buyedmapper.addbuyed(buyed);
+    }
+
+    @Override
+    public Buyeddetail findone(String bid) {
+        Buyed buyed=buyedmapper.findone(bid);
+        Product product=productmapper.findOneProduct(buyed.getId());
+        Buyeddetail buyeddetail=new Buyeddetail(product,buyed);
+        return buyeddetail;
     }
 }

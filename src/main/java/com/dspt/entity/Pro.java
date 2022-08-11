@@ -9,15 +9,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Product {
+public class Pro {
     private String id;
     private String pname;
-    private String label;
-    private String type;
     private String url;
-    private String url2;
-    private String url3;
     private Double price;
-    private String addr;
-    private String phoen;
 }

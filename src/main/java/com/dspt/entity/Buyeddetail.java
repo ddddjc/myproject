@@ -15,29 +15,31 @@ import java.util.Date;
 public class Buyeddetail {
     private String bid;
     private String id;
+    private String pname;
     private String label;
     private String type;
     private String url;
     private Double price;
-
+    private int num;
     private Double all;
     private String addr;
     private String phoen;
     private String username;
     private Date date;
-    private int num;
 
     public Buyeddetail(Product product,Buyed buyed) {
         this.id=product.getId();
         this.addr=product.getAddr();
+        this.pname=product.getPname();
         this.label=product.getLabel();
         this.phoen=product.getPhoen();
         this.url=product.getUrl();
-        this.price=Double.parseDouble(product.getPrice());
+        this.price=product.getPrice();
         this.type=product.getType();
         this.bid=buyed.getBid();
         this.num=buyed.getNum();
         this.date=buyed.getDate();
         this.all=this.price*this.num;
+        this.username=buyed.getUsername();
     }
 }

@@ -1,6 +1,7 @@
 package com.dspt.service.impl;
 
 import com.dspt.entity.Car;
+import com.dspt.entity.Cardet;
 import com.dspt.entity.Cardetail;
 import com.dspt.entity.Product;
 import com.dspt.mapper.Carmapper;
@@ -31,8 +32,16 @@ public class Carserviceimpl implements Carservice {
             Product product = productmapper.findOneProduct(car.getId());
             Cardetail cardetail = new Cardetail(product, car);
             cardetails.add(cardetail);
+//            cardet.add(new Cardet(cardetail));
         }
         return cardetails;
+    }
+
+    @Override
+    public Cardetail findcardetil(String cid) {
+        Car car=carmapper.findoen(cid);
+        Product product=productmapper.findOneProduct(car.getId());
+        return new Cardetail(product,car);
     }
 
     @Override

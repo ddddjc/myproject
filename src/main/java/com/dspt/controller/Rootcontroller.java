@@ -32,7 +32,7 @@ public class Rootcontroller extends BaseController{
             return new JsonResult(FALSE,"未知错误",null);
     }
     @GetMapping("/alluserdata")
-    public JsonResult findsome(@RequestBody String s,HttpServletRequest request) throws Exception {
+    public JsonResult findsome(String s,HttpServletRequest request) throws Exception {
         int n=Integer.parseInt(s);
         System.out.println(n);
         String token=request.getHeader("token");
@@ -46,7 +46,7 @@ public class Rootcontroller extends BaseController{
         }
     }
     @GetMapping("/little")
-    public JsonResult findlittle(@RequestBody String s,HttpServletRequest request) throws Exception {
+    public JsonResult findlittle(String s,HttpServletRequest request) throws Exception {
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
         if(username.equals("root")){
