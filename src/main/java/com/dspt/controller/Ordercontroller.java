@@ -26,8 +26,8 @@ public class Ordercontroller {
     Orderservice orderservice;
     @Autowired
     Carservice carservice;
-    @PostMapping("/buyproduct")
-    public JsonResult buyproduct(@RequestBody String cid, HttpServletRequest request){
+    @GetMapping("/buyproduct")
+    public JsonResult buyproduct(String cid, HttpServletRequest request){
         Car findoen = carservice.findoen(cid);
         orderservice.tobuy(new Buyed(null,findoen.getUsername(),findoen.getId(),new Date(),findoen.getNum()));
         carservice.delcar(cid);

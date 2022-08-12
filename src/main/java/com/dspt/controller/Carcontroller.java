@@ -40,13 +40,13 @@ public class Carcontroller {
             return new JsonResult(400,"查询失败",null);
         return new JsonResult(200,"查询成功",carservice.findcardetil(cid));
     }
-    @PostMapping("/del")
-    public JsonResult delcar(@RequestBody String cid){
+    @GetMapping("/del")
+    public JsonResult delcar(String cid){
         carservice.delcar(cid);
         return new JsonResult(200,"删除成功",null);
     }
     @GetMapping("/buyone")
-    public JsonResult buyoen(@RequestBody String cid, HttpServletRequest request){
+    public JsonResult buyoen(String cid, HttpServletRequest request){
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
         Car car =carservice.findoen(cid);
@@ -56,7 +56,7 @@ public class Carcontroller {
         carservice.delcar(cid);
         return new JsonResult(200,"购买成功",null);
     }
-    @PostMapping("/buyall")
+    @GetMapping("/buyall")
      public JsonResult buyall(HttpServletRequest request){
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
@@ -68,7 +68,7 @@ public class Carcontroller {
         carservice.delall(username);
         return new JsonResult(200,"购买成功",null);
     }
-    @PostMapping("delall")
+    @GetMapping("delall")
     public JsonResult delall(HttpServletRequest request){
         String token=request.getHeader("token");
         String username=JWTconfig.gettokenUsername(token);
